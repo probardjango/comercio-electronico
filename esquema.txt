@@ -1,0 +1,12 @@
+
+1. Productos
+	> Producto Individual (detail view)
+	> Lista de Productos (list view)
+	> Inventario (stock)
+	> Buscar Productos
+
+
+2. Proceso de Compra (checkout)
+
+
+3. Pago
