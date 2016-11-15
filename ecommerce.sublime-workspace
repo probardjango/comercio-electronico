@@ -288,58 +288,10 @@
 	"buffers":
 	[
 		{
-			"file": "src/ecommerce/settings.py",
+			"file": "src/templates/inicio.html",
 			"settings":
 			{
-				"buffer_size": 3980,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "CRUD.md",
-			"settings":
-			{
-				"buffer_size": 392,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/productos/models.py",
-			"settings":
-			{
-				"buffer_size": 489,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/productos/admin.py",
-			"settings":
-			{
-				"buffer_size": 123,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/productos/views.py",
-			"settings":
-			{
-				"buffer_size": 200,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/ecommerce/urls.py",
-			"settings":
-			{
-				"buffer_size": 1388,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/productos/urls.py",
-			"settings":
-			{
-				"buffer_size": 370,
+				"buffer_size": 2573,
 				"line_ending": "Windows"
 			}
 		}
@@ -368,8 +320,20 @@
 	},
 	"file_history":
 	[
-		"/C/Users/karli/Desktop/ecommerce/src/esquema.txt",
+		"/C/Users/karli/Desktop/ecommerce/src/static_pro/static/css/navbar-static-top.css",
+		"/C/Users/karli/Desktop/ecommerce/src/templates/navbar.html",
+		"/C/Users/karli/Desktop/ecommerce/src/templates/base.html",
 		"/C/Users/karli/Desktop/ecommerce/src/ecommerce/settings.py",
+		"/C/Users/karli/Desktop/ecommerce/src/productos/templates/productos/producto_list.html",
+		"/C/Users/karli/Desktop/ecommerce/src/productos/urls.py",
+		"/C/Users/karli/Desktop/ecommerce/src/productos/templates/productos/producto_detail.html",
+		"/C/Users/karli/Desktop/ecommerce/src/productos/views.py",
+		"/C/Users/karli/Desktop/ecommerce/src/.gitignore",
+		"/C/Users/karli/Desktop/ecommerce/src/productos/models.py",
+		"/C/Users/karli/Desktop/ecommerce/src/ecommerce/urls.py",
+		"/C/Users/karli/Desktop/ecommerce/src/productos/admin.py",
+		"/C/Users/karli/Desktop/ecommerce/CRUD.md",
+		"/C/Users/karli/Desktop/ecommerce/src/esquema.txt",
 		"/C/Users/karli/Desktop/ecommerce/src/manage.py",
 		"/C/Users/karli/Desktop/ecommerce/src/pd110/settings.py",
 		"/C/Users/karli/Desktop/ecommerce/src/pd110/urls.py",
@@ -483,19 +447,7 @@
 		"/C/Users/Karlita/Desktop/django projects/modelos/src/myapp/migrations/0001_initial.py",
 		"/C/Users/Karlita/Desktop/django projects/probardjango/src/boletin/admin.py",
 		"/C/Users/Karlita/Desktop/django projects/modelos/src/myapp/models.py",
-		"/C/Users/Karlita/Desktop/django projects/modelos/src/modelos/__init__.py",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/fbvs/settings.py",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/plantillas/form.html",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/plantillas/detail.html",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/plantillas/lista.html",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/plantillas/update.html",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/plantillas/delete.html",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/fbvs/urls.py",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/myapp/views.py",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/plantillas/base.html",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/plantillas/home.html",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/src/myapp/models.py",
-		"/C/Users/Karlita/Desktop/django projects/fbvs/CRUD.txt"
+		"/C/Users/Karlita/Desktop/django projects/modelos/src/modelos/__init__.py"
 	],
 	"find":
 	{
@@ -547,188 +499,30 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/ecommerce/settings.py",
+					"file": "src/templates/inicio.html",
 					"settings":
 					{
-						"buffer_size": 3980,
+						"buffer_size": 2573,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1464,
-								1464
+								235,
+								235
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 858.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "CRUD.md",
-					"settings":
-					{
-						"buffer_size": 392,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/productos/models.py",
-					"settings":
-					{
-						"buffer_size": 489,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								447,
-								447
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/productos/admin.py",
-					"settings":
-					{
-						"buffer_size": 123,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								122,
-								122
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/productos/views.py",
-					"settings":
-					{
-						"buffer_size": 200,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								199,
-								199
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/ecommerce/urls.py",
-					"settings":
-					{
-						"buffer_size": 1388,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								897,
-								897
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 264.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/productos/urls.py",
-					"settings":
-					{
-						"buffer_size": 370,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								368,
-								368
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

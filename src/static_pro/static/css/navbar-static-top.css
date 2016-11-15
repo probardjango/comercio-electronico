@@ -7,8 +7,8 @@ body {
 }
 
 .navbar-default {
-	background-color: #172548 !important;
-	border-color: #337ab7;
+	background-color: #f12235!important;
+	border-color: #3fa1f5;
 }
 
 .navbar-default .navbar-brand {
@@ -16,7 +16,7 @@ body {
 }
 
 .navbar-default .navbar-brand:hover {
-	color: #337ab7;
+	color: #3fa1f5;
 }
 
 .navbar-default .navbar-nav>li>a {
