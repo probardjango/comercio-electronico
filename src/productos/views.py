@@ -12,7 +12,11 @@ class ProductoListView(ListView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ProductoListView, self).get_context_data(*args, **kwargs)
 		context["ahora"] = timezone.now()
+<<<<<<< HEAD
 		return context 
+=======
+		return context
+>>>>>>> tmp
 
 class ProductoDetailView(DetailView):
 	model = Producto
