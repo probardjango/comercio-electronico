@@ -35,6 +35,25 @@ class Producto(models.Model):
 	def get_absolute_url(self):
 		return reverse("producto_detail", kwargs={"pk": self.pk})
 
+class Caracteristica(models.Model):
+	producto = models.ForeignKey(Producto)
+	titulo = models.CharField(max_length=120)
+	precio = models.DecimalField(decimal_places=2, max_digits=10)
+	precio_rebajas = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)
+	activo = models.BooleanField(default=True)
+	stock = models.IntegerField(null=True, blank=True)
+
+	def __unicode__(self):
+		return self.titulo
+
+	def get_precio(self):
+		if self.precio_rebajas is not None: 
+			return self.precio_rebajas
+		else:
+			return self.precio
+
+	def get_absolute_url(self):
+		return self.producto.get_absolute_url()
 		
 
 # imagen Producto

@@ -3,5 +3,9 @@
 {% block content %}
 
 {{ object.titulo }}
-
+<select class="form-control">
+{% for car_obj in object.caracteristica_set.all %}
+<option value="{{ car_obj.id }}">{{ car_obj }}</option>
+{% endfor %}
+</select>
 {% endblock %}
