@@ -10,10 +10,5 @@ urlpatterns = [
     #url(r'^$', views.inicio, name='inicio'),
     url(r'^(?P<pk>\d+)/$', ProductoDetailView.as_view(), name='producto_detail'),
     url(r'^$', ProductoListView.as_view(), name='producto_list'),
-<<<<<<< HEAD
 ]
 
-=======
-
-]
->>>>>>> tmp
