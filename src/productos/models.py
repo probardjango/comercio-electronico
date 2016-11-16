@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+from django.core.urlresolvers import reverse
 
 from django.db import models
 
@@ -16,6 +17,9 @@ class Producto(models.Model):
 
 	def __str__(self): #3
 		return self.titulo
+
+	def get_absolute_url(self):
+		return reverse("producto_detail", kwargs={"pk": self.pk})
 
 		
 
