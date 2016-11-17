@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
 
 from django.db import models
+from django.db.models.signals import post_save
 
 # Create your models here.
 class ProductoQuerySet(models.query.QuerySet):
@@ -54,6 +55,18 @@ class Caracteristica(models.Model):
 
 	def get_absolute_url(self):
 		return self.producto.get_absolute_url()
+
+def producto_post_save_receiver(sender, instance, created, *args, **kwargs):
+	producto = instance
+	caracteristicas = producto.caracteristica_set.all()
+	if caracteristicas.count() == 0:
+		nuevo_car = Caracteristica()
+		nuevo_car.producto = producto
+		nuevo_car.titulo = "Default"
+		nuevo_car.precio = producto.precio
+		nuevo_car.save()
+
+post_save.connect(producto_post_save_receiver, sender=Producto)
 		
 
 # imagen Producto

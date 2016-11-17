@@ -3,9 +3,13 @@
 {% block content %}
 
 {{ object.titulo }}
+{% if object.caracteristica_set.count > 1 %}
 <select class="form-control">
 {% for car_obj in object.caracteristica_set.all %}
 <option value="{{ car_obj.id }}">{{ car_obj }}</option>
 {% endfor %}
 </select>
+{% endif %}
+<br/>
+<a href='#'>Añadir a la Cesta</a>
 {% endblock %}
