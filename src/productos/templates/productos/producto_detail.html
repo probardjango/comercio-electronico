@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class='row'>
 
-{{ object.titulo }}
+<div class='col-sm-8'>
+<h2><strong>{{ object.titulo }}</strong></h2>
+<p class='lead'>{{ object.descripcion }}</p>
+</div>
+
+<!-- Barra  Lateral  -->
+<div class='col-sm-4'>
+<h3>{{ object.precio }}</h3>
+
 {% if object.caracteristica_set.count > 1 %}
 <select class="form-control">
 {% for car_obj in object.caracteristica_set.all %}
@@ -11,5 +20,10 @@
 </select>
 {% endif %}
 <br/>
-<a href='#'>Añadir a la Cesta</a>
+<a href='#'>Añadir a la Cesta</a><br/><hr/>
+<h4>Productos Similares</h4>
+</div>
+<!-- End  Barra  Lateral  -->
+
+</div>
 {% endblock %}
