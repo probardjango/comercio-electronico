@@ -5,6 +5,15 @@
 
 <div class='col-sm-8'>
 <h2><strong>{{ object.titulo }}</strong></h2>
+
+{% if object.productoimg_set.count > 0 %}
+<div>
+	{% for img in object.productoimg_set.all %}
+	<img class='img-responsive' src='{{ img.imagen.url }}' />
+	{% endfor %}
+</div>
+{% endif %}
+
 <p class='lead'>{{ object.descripcion }}</p>
 </div>
 

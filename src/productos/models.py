@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 
 from django.db import models
 from django.db.models.signals import post_save
+from django.utils.text import slugify
 
 # Create your models here.
 class ProductoQuerySet(models.query.QuerySet):
@@ -67,6 +68,18 @@ def producto_post_save_receiver(sender, instance, created, *args, **kwargs):
 		nuevo_car.save()
 
 post_save.connect(producto_post_save_receiver, sender=Producto)
+
+def img_upload_to(instance, filename):
+	titulo = instance.producto.titulo
+	slug = slugify(titulo)
+	return "productos/%s/%s" %(slug, filename)
+
+class ProductoImg(models.Model):
+	producto = models.ForeignKey(Producto)
+	imagen = models.ImageField(upload_to=img_upload_to)
+
+	def __unicode__(self):
+		return self.producto.titulo
 		
 
 # imagen Producto
