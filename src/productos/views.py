@@ -1,11 +1,42 @@
 from django.db.models import Q
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from .models import Producto
+from .forms import CaracteristicaStockFormSet
+from .models import Producto, Caracteristica
 # Create your views here.
+class CaracteristicaListView(ListView):
+	model = Caracteristica
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(CaracteristicaListView, self).get_context_data(*args, **kwargs)
+		context["formset"] = CaracteristicaStockFormSet(queryset=self.get_queryset())
+		return context 
+
+	def get_queryset(self, *args, **kwargs):
+		producto_pk = self.kwargs.get("pk")
+		if producto_pk:
+			producto = get_object_or_404(Producto, pk=producto_pk)
+			queryset = Caracteristica.objects.filter(producto=producto)
+		return queryset
+
+	def post(self, request, *args, **kwargs):
+		formset = CaracteristicaStockFormSet(request.POST, request.FILES)
+		print request.POST
+		if formset.is_valid():
+			formset.save(commit=False) 
+			for form in formset:
+				nuevo_pro = form.save(commit=False)
+				producto_pk = self.kwargs.get("pk")
+				producto = get_object_or_404(Producto, pk=producto_pk)
+				nuevo_pro.producto = producto
+				nuevo_pro.save()
+			return redirect("producto_list") 
+		raise Http404
+
 
 class ProductoListView(ListView):
 	model = Producto
