@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404
 from django.shortcuts import render, get_object_or_404, redirect
@@ -26,15 +27,16 @@ class CaracteristicaListView(StaffRequiredMixin, ListView):
 
 	def post(self, request, *args, **kwargs):
 		formset = CaracteristicaStockFormSet(request.POST, request.FILES)
-		print request.POST
 		if formset.is_valid():
 			formset.save(commit=False) 
 			for form in formset:
 				nuevo_pro = form.save(commit=False)
+				# if nuevo_pro.titulo:
 				producto_pk = self.kwargs.get("pk")
 				producto = get_object_or_404(Producto, pk=producto_pk)
 				nuevo_pro.producto = producto
 				nuevo_pro.save()
+			messages.success(request, "Tu stock ha sido modificado correctamente.")
 			return redirect("producto_list") 
 		raise Http404
 

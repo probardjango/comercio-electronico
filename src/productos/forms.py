@@ -7,11 +7,10 @@ class CaracteristicaStockForm(forms.ModelForm):
 	class Meta: 
 		model = Caracteristica
 		fields = [
-			"titulo",
 			"precio",
 			"precio_rebajas",
 			"stock",
 			"activo",
 		]
 
-CaracteristicaStockFormSet = modelformset_factory(Caracteristica, form=CaracteristicaStockForm, extra=1)
+CaracteristicaStockFormSet = modelformset_factory(Caracteristica, form=CaracteristicaStockForm, extra=0)
