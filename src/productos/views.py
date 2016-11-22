@@ -6,9 +6,10 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from .forms import CaracteristicaStockFormSet
+from .mixins import StaffRequiredMixin, LoginRequiredMixin
 from .models import Producto, Caracteristica
 # Create your views here.
-class CaracteristicaListView(ListView):
+class CaracteristicaListView(StaffRequiredMixin, ListView):
 	model = Caracteristica
 
 	def get_context_data(self, *args, **kwargs):
@@ -58,3 +59,4 @@ class ProductoListView(ListView):
 
 class ProductoDetailView(DetailView):
 	model = Producto
+
