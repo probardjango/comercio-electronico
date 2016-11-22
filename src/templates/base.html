@@ -53,5 +53,13 @@
 
 
 {% include "javascript.html" %}
-  </body>
+
+<script>
+$(document).ready(function(){
+  {% block jquery %}
+  {% endblock %}
+})
+</script>
+
+</body>
 </html>

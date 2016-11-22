@@ -1,5 +1,27 @@
 {% extends "base.html" %}
 
+<script>
+  {% block jquery %}
+
+  function estabPrecio(){
+  	var precio = $(".caracteristica-select option:selected").attr("data-precio")
+  	var precio_rebajas = $(".caracteristica-select option:selected").attr("data-precio-rebajas")
+  	if (precio_rebajas != "" && precio_rebajas != "None" && precio_rebajas != null ) {
+	$("#precio").html("<h3>" + precio_rebajas + " <small style='color:red;text-decoration:line-through;'> " + precio + "</small></h3>");
+	} else {
+		$("#precio").html(precio);
+	}
+  }
+
+  estabPrecio()
+
+    $(".caracteristica-select").change(function(){
+  	estabPrecio()
+  })
+
+  {% endblock %}
+</script>
+
 {% block content %}
 <div class='row'>
 
@@ -19,12 +41,12 @@
 
 <!-- Barra  Lateral  -->
 <div class='col-sm-4'>
-<h3>{{ object.precio }}</h3>
+<h3 id="precio">{{ object.precio }}</h3>
 
 {% if object.caracteristica_set.count > 1 %}
-<select class="form-control">
+<select class="form-control caracteristica-select">
 {% for car_obj in object.caracteristica_set.all %}
-<option value="{{ car_obj.id }}">{{ car_obj }}</option>
+<option data-precio-rebajas="{{ car_obj.precio_rebajas }}" data-precio="{{ car_obj.precio }}" value="{{ car_obj.id }}">{{ car_obj }}</option>
 {% endfor %}
 </select>
 {% endif %}
