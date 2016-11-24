@@ -25,6 +25,8 @@ class Producto(models.Model):
 	activo = models.BooleanField(default=True)
 	#slug
 	#stock
+	categorias = models.ManyToManyField('Categoria', blank=True)
+	default = models.ForeignKey('Categoria', related_name='categoria_default', null=True, blank=True)
 
 	objects = ProductoManager()
 
@@ -73,7 +75,7 @@ def img_upload_to(instance, filename):
 	titulo = instance.producto.titulo
 	slug = slugify(titulo)
 	return "productos/%s/%s" %(slug, filename)
-
+# imagen Producto
 class ProductoImg(models.Model):
 	producto = models.ForeignKey(Producto)
 	imagen = models.ImageField(upload_to=img_upload_to)
@@ -82,6 +84,14 @@ class ProductoImg(models.Model):
 		return self.producto.titulo
 		
 
-# imagen Producto
-
 # categoria producto 
+class Categoria(models.Model):
+	titulo = models.CharField(max_length=120, unique=True)
+	slug = models.SlugField(unique=True)
+	descripcion = models.TextField(null=True, blank=True)
+	activo = models.BooleanField(default=True)
+	timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+
+	def __unicode__(self):
+		return self.titulo
+
