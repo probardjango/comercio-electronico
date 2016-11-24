@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+<style>
+{% block style %}
+.orig-precio {
+  color:red;
+  text-decoration:line-through;
+}
+{% endblock %}
+</style>
+
 <script>
   {% block jquery %}
 
@@ -7,7 +16,7 @@
   	var precio = $(".caracteristica-select option:selected").attr("data-precio")
   	var precio_rebajas = $(".caracteristica-select option:selected").attr("data-precio-rebajas")
   	if (precio_rebajas != "" && precio_rebajas != "None" && precio_rebajas != null ) {
-	$("#precio").html("<h3>" + precio_rebajas + " <small style='color:red;text-decoration:line-through;'> " + precio + "</small></h3>");
+	$("#precio").html("<h3>" + precio_rebajas + " <small class='orig-precio'> " + precio + "</small></h3>");
 	} else {
 		$("#precio").html(precio);
 	}
@@ -41,14 +50,25 @@
 
 <!-- Barra  Lateral  -->
 <div class='col-sm-4'>
-<h3 id="precio">{{ object.precio }}</h3>
+
 
 {% if object.caracteristica_set.count > 1 %}
+<h3 id="precio">{{ object.caracteristica_set.first.precio }}</h3>
 <select class="form-control caracteristica-select">
 {% for car_obj in object.caracteristica_set.all %}
 <option data-precio-rebajas="{{ car_obj.precio_rebajas }}" data-precio="{{ car_obj.precio }}" value="{{ car_obj.id }}">{{ car_obj }}</option>
 {% endfor %}
 </select>
+{% else %}
+
+<h3 id="precio">{% if object.caracteristica_set.first.precio_rebajas %}
+{{ object.caracteristica_set.first.precio_rebajas }}
+<small class='orig-precio'>{{ object.caracteristica_set.first.precio }}</small>
+{% else %}
+{{ object.caracteristica_set.first.precio }}
+{% endif %}
+</h3>
+ 
 {% endif %}
 <br/>
 <a href='#'>Añadir a la Cesta</a><br/><hr/>
