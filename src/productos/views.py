@@ -8,8 +8,26 @@ from django.views.generic.list import ListView
 
 from .forms import CaracteristicaStockFormSet
 from .mixins import StaffRequiredMixin, LoginRequiredMixin
-from .models import Producto, Caracteristica
+from .models import Producto, Caracteristica, Categoria
 # Create your views here.
+class CategoriaListView(ListView):
+	model = Categoria
+	queryset = Categoria.objects.all()
+	template_name = "productos/producto_list.html"
+
+class CategoriaDetailView(DetailView):
+	model = Categoria
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(CategoriaDetailView, self).get_context_data(*args, **kwargs)
+		obj = self.get_object()
+		producto_set = obj.producto_set.all()
+		producto_default = obj.categoria_default.all()
+		productos = ( producto_set | producto_default ).distinct()
+		context["productos"] = productos
+		return context
+
+
 class CaracteristicaListView(StaffRequiredMixin, ListView):
 	model = Caracteristica
 

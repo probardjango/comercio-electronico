@@ -95,3 +95,5 @@ class Categoria(models.Model):
 	def __unicode__(self):
 		return self.titulo
 
+	def get_absolute_url(self):
+		return reverse("categoria_detail", kwargs={"slug": self.slug})

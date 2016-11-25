@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^productos/', include('productos.urls')),
+    url(r'^categorias/', include('productos.urls_categorias')),
 
 ]
 
