@@ -45,6 +45,13 @@ class Producto(models.Model):
 	def get_absolute_url(self):
 		return reverse("producto_detail", kwargs={"pk": self.pk})
 
+	def get_img_url(self):
+		img = self.productoimg_set.first()
+		if img:
+			return img.imagen.url
+		return img
+
+
 class Caracteristica(models.Model):
 	producto = models.ForeignKey(Producto)
 	titulo = models.CharField(max_length=120)
@@ -81,6 +88,7 @@ def img_upload_to(instance, filename):
 	titulo = instance.producto.titulo
 	slug = slugify(titulo)
 	return "productos/%s/%s" %(slug, filename)
+
 # imagen Producto
 class ProductoImg(models.Model):
 	producto = models.ForeignKey(Producto)
