@@ -80,3 +80,8 @@ class ProductoListView(ListView):
 class ProductoDetailView(DetailView):
 	model = Producto
 
+	def get_context_data(self, *args, **kwargs):
+		context = super(ProductoDetailView, self).get_context_data(*args, **kwargs)
+		instance = self.get_object()
+		context["similares"] = Producto.objects.get_similares(instance).order_by("?")[:3]
+		return context

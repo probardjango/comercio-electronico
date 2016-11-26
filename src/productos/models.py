@@ -17,6 +17,12 @@ class ProductoManager(models.Manager):
 	def all(self, *args, **kwargs):
 		return self.get_queryset().activo()
 
+	def get_similares(self, instance):
+		productos_uno = self.get_queryset().filter(categorias__in=instance.categorias.all())
+		productos_dos = self.get_queryset().filter(default=instance.default)
+		qs = (productos_uno | productos_dos).exclude(id=instance.id).distinct()
+		return qs
+
 
 class Producto(models.Model):
 	titulo = models.CharField(max_length=120)

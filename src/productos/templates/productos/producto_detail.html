@@ -82,6 +82,9 @@
 
 <br/><hr/>
 <h4>Productos Similares</h4>
+{% for producto in similares %}
+<a href='{{ producto.get_absolute_url }}'>{{ producto.titulo }}</a><br/>
+{% endfor %}
 </div>
 <!-- End  Barra  Lateral  -->
 
