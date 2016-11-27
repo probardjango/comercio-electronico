@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Todos los Productos<small><a href='{% url "categoria_list" %}'> Categorias</a></small></h1>
+{% for producto in object_list %}
+<div class='row'>
+<div class='col-xs-4'>
+ <div class="thumbnail text-center">
+{% if producto.get_img_url %}
+<a href='{{ producto.get_absolute_url }}'><img class='img-responsive' src='{{ producto.get_img_url }}' /></a><br/>{% endif %}
+  <div class="caption">
+      <h4><a href='{{ producto.get_absolute_url }}'>{{ producto.titulo }}</a></h4>
+  </div>
+</div>
+<br/>
 
-<table class='table'>
-	{% for object in object_list %}
-<tr>
-	<td><a href='{{ object.get_absolute_url }}'>{{ object.titulo }}</a></td>
-</tr>
+</div>
+{% cycle '' '' '</div><div class="row">' %}
 	{% endfor %}
-</table>
+
 
 {% endblock %}

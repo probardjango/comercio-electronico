@@ -80,16 +80,22 @@
 
 <br/><hr/>
 <h4>Productos Similares</h4>
+<div class='row'>
 {% for producto in similares %}
-
+<div class='col-xs-6'>
+ <div class="thumbnail text-center">
 {% if producto.get_img_url %}
-<a href='{{ producto.get_absolute_url }}'><img class='img-responsive' src='{{ producto.get_img_url }}' /></a>
+<a href='{{ producto.get_absolute_url }}'><img class='img-responsive' src='{{ producto.get_img_url }}' /></a><br/>{% endif %}
+  <div class="caption">
+      <h4><a href='{{ producto.get_absolute_url }}'>{{ producto.titulo }}</a></h4>
+  </div>
+</div>
+<br/>
 
-{% else %}
-<a href='{{ producto.get_absolute_url }}'>{{ producto.titulo }}</a><br/>
-
-{% endif %}
+</div>
+{% cycle '' '</div><div class="row">' %}
 {% endfor %}
+</div>
 </div>
 <!-- End  Barra  Lateral  -->
 
