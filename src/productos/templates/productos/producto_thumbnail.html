@@ -1,0 +1,12 @@
+<div class="thumbnail text-center">
+	<div class="caption">
+      <h4><a href='{{ producto.get_absolute_url }}'>{{ producto.titulo }}</a></h4>
+  </div>
+{% if producto.get_img_url %}
+<a href='{{ producto.get_absolute_url }}'><img class='img-responsive' src='{{ producto.get_img_url }}' /></a><br/>{% endif %}
+
+{% if precio == "True" %}
+{{ producto.caracteristica_set.first.get_html_precio }}
+{% endif %}
+  
+</div>

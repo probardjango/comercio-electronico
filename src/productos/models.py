@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 
 from django.db import models
 from django.db.models.signals import post_save
+from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 
 # Create your models here.
@@ -68,6 +69,13 @@ class Caracteristica(models.Model):
 			return self.precio_rebajas
 		else:
 			return self.precio
+
+	def get_html_precio(self):
+		if self.precio_rebajas is not None:
+			html_text = "<span class='precio-rebajas'>%s</span> <span class='orig-precio'>%s</span>" %(self.precio_rebajas, self.precio)
+		else:
+			html_text = "<span class='precio'>%s</span>" %(self.precio)
+		return mark_safe(html_text)
 
 	def get_absolute_url(self):
 		return self.producto.get_absolute_url()

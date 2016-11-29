@@ -5,13 +5,7 @@
 {% for producto in object_list %}
 <div class='row'>
 <div class='col-xs-4'>
- <div class="thumbnail text-center">
-{% if producto.get_img_url %}
-<a href='{{ producto.get_absolute_url }}'><img class='img-responsive' src='{{ producto.get_img_url }}' /></a><br/>{% endif %}
-  <div class="caption">
-      <h4><a href='{{ producto.get_absolute_url }}'>{{ producto.titulo }}</a></h4>
-  </div>
-</div>
+ {% include "productos/producto_thumbnail.html" with producto=producto precio="True" %}
 <br/>
 
 </div>
