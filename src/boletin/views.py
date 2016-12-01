@@ -2,19 +2,24 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
 
+from productos.models import ProductoDestacado
 from .forms import RegModelForm, ContactForm
 from .models import Registrado
 
 # Create your views here.
 def inicio(request):
 	titulo = "Bienvenidos."
-	if request.user.is_authenticated():
-		titulo = "Bienvenid@ %s" %(request.user)
+
+	destacado_img = ProductoDestacado.objects.filter(activo=True).order_by("?").first()
+
+	# if request.user.is_authenticated():
+	# 	titulo = "Bienvenid@ %s" %(request.user)
 	form = RegModelForm(request.POST or None)
 
 	context = {
 				"titulo": titulo,
 				"el_form": form,
+				"destacado_img": destacado_img,
 			}
 
 	if form.is_valid():
@@ -34,11 +39,11 @@ def inicio(request):
 				"titulo": "Gracias %s!" %(email)
 			}
 
-	if request.user.is_authenticated() and request.user.is_staff:
-		queryset = Registrado.objects.all().order_by("-timestamp") #.filter(nombre__iexact="karlita")
-		context = {
-			"queryset": queryset,
-		}
+	# if request.user.is_authenticated() and request.user.is_staff:
+	# 	queryset = Registrado.objects.all().order_by("-timestamp") #.filter(nombre__iexact="karlita")
+	# 	context = {
+	# 		"queryset": queryset,
+	# 	}
 	return render(request, "inicio.html", context)
 
 def contact(request):

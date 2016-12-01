@@ -72,9 +72,9 @@ class Caracteristica(models.Model):
 
 	def get_html_precio(self):
 		if self.precio_rebajas is not None:
-			html_text = "<span class='precio-rebajas'>%s</span> <span class='orig-precio'>%s</span>" %(self.precio_rebajas, self.precio)
+			html_text = "<span class='precio-rebajas'><strong>%s</strong></span> <span class='orig-precio'>%s</span>" %(self.precio_rebajas, self.precio)
 		else:
-			html_text = "<span class='precio'>%s</span>" %(self.precio)
+			html_text = "<span class='precio'><strong>%s</strong></span>" %(self.precio)
 		return mark_safe(html_text)
 
 	def get_absolute_url(self):
@@ -119,3 +119,23 @@ class Categoria(models.Model):
 
 	def get_absolute_url(self):
 		return reverse("categoria_detail", kwargs={"slug": self.slug})
+
+def img_destacado_upload_to(instance, filename):
+	titulo = instance.producto.titulo
+	slug = slugify(titulo)
+	return "productos/%s/destacado/%s" %(slug, filename)
+
+class ProductoDestacado(models.Model):
+	producto = models.ForeignKey(Producto)
+	imagen = models.ImageField(upload_to=img_destacado_upload_to)
+	titulo = models.CharField(max_length=120, null=True, blank=True)
+	texto = models.CharField(max_length=300, null=True, blank=True)
+	texto_right = models.BooleanField(default=False)
+	ver_precio = models.BooleanField(default=False)
+	activo = models.BooleanField(default=True)
+	hacer_img_fondo = models.BooleanField(default=False)
+	texto_color_css = models.CharField(max_length=7, null=True, blank=True)
+
+	def __unicode__(self):
+		return self.producto.titulo
+

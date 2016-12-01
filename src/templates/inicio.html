@@ -7,8 +7,18 @@
 <style>
 {% block style %}
 .jumbotron {
+  min-height: 450px;
   background-color: #333333 !important;
-  color: #FFF !important;
+  color: #FFF;
+  {% if destacado_img.hacer_img_fondo %}
+  background-image: url("{{ destacado_img.imagen.url }}");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -75px;
+  {% endif %}
+  {% if destacado_img.texto_color_css %}
+  color: #{{ destacado_img.text_css_color }};
+  {% endif %}
 }
 
 /*.fa-5x {
@@ -21,22 +31,32 @@
 
 {% block jumbotron %}
 
-{% if request.user.is_staff %}
-<div class='container'>
-<table class='table'>
-  {% for instance in queryset %}
-  <tr><td>{{ instance }}</td><td>{{ instance.nombre }}</td><td>hace {{ instance.timestamp|timesince }}</td></tr><br/>
-  {% endfor %}
-</table>
+{% if destacado_img %}
+<div class="jumbotron">
+<div class="container">
+<div class='row'>
+  <div class='col-sm-12 {% if destacado_img.texto_right %} pull-right {% endif %}'>
+        <h2><strong>{{ destacado_img.producto.titulo }}</strong></h2>
+        <p>{{ destacado_img.texto }}</p>
+        <p>
+          <a class="btn btn-lg btn-default" href="{{ destacado_img.producto.get_absolute_url }}" role="button">Más Detalles</a>
+        </p>
+  </div>
+  {% if not destacado_img.hacer_img_fondo %}
+<div class='col-sm-6'><img src='{{ destacado_img.imagen.url }}' class='img-responsive' /></div>
+{% endif %}
 </div>
-{% else %}
+</div>
+</div>
 
+
+{% else %}
 <div class="jumbotron">
 <div class="container">
 <div class='row'>
   <div class='col-sm-6'>
-        <h2><strong>Probar Django 1.10</strong></h2>
-        <p>Un proyecto para principiantes. El objetivo es construir una página web simple a la par que elegante en muy poco tiempo</p>
+        <h2><strong>Ecommerce</strong></h2>
+        <p>Crear una tienda online.</p>
         <p>
           <a class="btn btn-lg btn-default" href="../../components/#navbar" role="button">Únete &raquo;</a>
         </p>
