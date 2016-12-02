@@ -34,3 +34,9 @@ body {
 .navbar-default .navbar-toggle:hover {
 	background-color: white;
 }
+
+.fa-shopping-basket {
+	font-size: 20px;
+    vertical-align: middle;
+    margin-top: 14px;
+}
