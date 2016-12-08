@@ -2,7 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import render
 
-from productos.models import ProductoDestacado
+from productos.models import ProductoDestacado, Producto
 from .forms import RegModelForm, ContactForm
 from .models import Registrado
 
@@ -11,7 +11,8 @@ def inicio(request):
 	titulo = "Bienvenidos."
 
 	destacado_img = ProductoDestacado.objects.filter(activo=True).order_by("?").first()
-
+	productos = Producto.objects.all().order_by("?")[:6]
+	productos2 = Producto.objects.all().order_by("?")
 	# if request.user.is_authenticated():
 	# 	titulo = "Bienvenid@ %s" %(request.user)
 	form = RegModelForm(request.POST or None)
@@ -20,6 +21,8 @@ def inicio(request):
 				"titulo": titulo,
 				"el_form": form,
 				"destacado_img": destacado_img,
+				"productos": productos,
+				"productos2": productos2,
 			}
 
 	if form.is_valid():
