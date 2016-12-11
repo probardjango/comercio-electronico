@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'registration',
     #mis apps
     'boletin',
+    'cestas',
     'productos',
 ]
 
